@@ -1,0 +1,25 @@
+body{
+background: blue;
+  background-image: url("../img/BMW.jpg");
+}
+form{
+  text-align: center;
+  margin-top: 10%;
+}
+h1{
+  text-align: center;
+  margin-top: 5%;
+  font-family: Arial;
+  color: beige;
+}
+.button{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 2px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}

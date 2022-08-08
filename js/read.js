@@ -1,35 +1,36 @@
-let out = function (str) {
+
+const out = function (str) {
   console.log(str);
 }
 
-const apiurl = 'http://localhost:8080/api/model';
+out('vi er igang med fetch bilmodeler');
 
-function fetchModel() {
-  return fetch(apiurl).then(svar => svar.json());
+const ModelUrl = 'http://localhost:8080/api/model';
+
+function fetchAllmodeler() {
+  out("get all modeler kaldt");
+  return fetch(ModelUrl).then(response => response.json());
 }
 
-console.log("vent")
-
-async function ShowModel() {
-  let carlist = await fetchModel();
-  out(carlist);
-  const carListeLang = carlist.length;
-
-  for (let i = 0; i < carListeLang; i++) {
-    const cars = carlist[i];
-    let table = document.getElementById("rytterlist").getElementsByTagName('tbody')[0];
-    let newRow = table.insertRow(table.length);
-    let cell1 = newRow.insertCell(0);
-    cell1.innerHTML = cars.navn;
-    let cell2 = newRow.insertCell(1);
-    cell2.innerHTML = cars.hold;
-    let cell3 = newRow.insertCell(2);
-    cell3.innerHTML = '<button class="btn btn-primary" onclick="onEdit(this)">Edit</button> <button onclick="onDelete(this)">Delete</button>';
-
-  }
+const modelMap = new Map();
+async function createModelMap() {
+  out("show alle film");
+  const modelList = await fetchAllmodeler();
+  modelList.forEach((model) => {
+    out(model);
+    modelMap.set(model.modelname, model);
+  })
 }
 
-console.log(ShowModel)
-document.addEventListener('DOMContentLoaded', () => {
-  ShowModel();
-});
+async function callModelMap(){
+  await createModelMap();
+}
+
+
+callModelMap();
+
+const pbFetchModels = document.getElementById('getModels');
+const tblMovies = document.getElementById('movieTable');
+
+
+out(pbFetchModels);
