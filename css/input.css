@@ -1,0 +1,31 @@
+body{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("img/BMW.jpg");
+  background-color: black;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.hero-image {
+
+}
+.container{
+  position: relative;
+  text-align: center;
+ }
+
+
+table,tr,td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: white;
+
+}
+.toptable{
+  margin-left: auto;
+  margin-right: auto;
+}
+
