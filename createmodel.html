@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <link rel="stylesheet" href="css/additems.css">
+  <script src="js/createmodel.js" defer ></script>
 </head>
 <body>
 <div>
   <h1>Insert carmodel into the system</h1>
-  <form action="http://localhost:8080/api/model" method="post" id="newModelForm">
+  <form action="http://localhost:8080/api/cars" method="post" id="newModelForm">
     <label for="modelname"></label>
     <input type="text" name="modelname" placeholder="Model Name">
     <label for="acceleration"></label>
@@ -19,11 +20,13 @@
     <input type="text" name="topspeed" placeholder="Topspeed">
     <label for="milesPrLiter"></label>
     <input type="text" name="milesPrLiter" placeholder="Km/L">
+    <label for="brandid"></label>
+    <select name="brandid" id="dd" ></select>
     <button class="button" type=submit title="Gem" id="submit">Create</button>
+
   </form>
 
 
 </div>
-<script src="js/createmodel.js"></script>
 </body>
 </html>

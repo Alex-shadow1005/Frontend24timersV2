@@ -1,13 +1,13 @@
 
-async function deleteRow(movie, rowNo, row) {
-  out(movie);
-  const response = await restDeleteMovie(movie);
+async function deleteRow(model, rowNo, row) {
+  out(model);
+  const response = await restDeleteModel(model);
   out("nu har vi slettet");
-  movieTable.deleteRow(row.rowIndex);
+  listofmodels.deleteRow(row.rowIndex);
 }
 
-async function restDeleteMovie(movie) {
-  const url = "http://localhost:8181/movie/" + movie.movieID;
+async function restDeleteModel(model) {
+  const url = "http://localhost:8080/api/cars/" + model.id;
 
   const fetchOptions = {
     method: "DELETE",
@@ -26,4 +26,6 @@ async function restDeleteMovie(movie) {
   };
 
   return response;
-} //restDeleteMovie
+}
+
+const listofmodels = document.getElementById("listofmodels");

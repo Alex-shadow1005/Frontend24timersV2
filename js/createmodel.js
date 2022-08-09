@@ -6,6 +6,21 @@ document.addEventListener('DOMContentLoaded', createFormEventListener);
 
 let modelForm;
 
+onload = async function filldropdown() {
+  const dd = document.getElementById("dd");
+  const brandList = await fetch("http://localhost:8080/api/brand").then(res => res.json());
+  out(brandList);
+  for (let i = 0; i < brandList.length; i++) {
+    const select = document.createElement("option");
+    select.value = brandList[i].id;
+    select.innerText = brandList[i].brandname;
+    dd.appendChild(select);
+
+  }
+}
+
+
+
 function createFormEventListener() {
   modelForm = document.getElementById("newModelForm");
   modelForm.addEventListener('submit', handleFormSubmit);
@@ -13,6 +28,7 @@ function createFormEventListener() {
 
 
 async function handleFormSubmit(event) {
+  alert()
   event.preventDefault();
   out("hej1");
   const form = event.currentTarget;
@@ -21,8 +37,9 @@ async function handleFormSubmit(event) {
   out(url);
   try {
     const formData = new FormData(form);
-    out(formData);
-    const responseData = await postFormDataAsJson(url, formData);
+    let id = formData.get("brandid")
+    formData.delete("brandid");
+    const responseData = await postFormDataAsJson(url, formData, id);
     out(responseData);
     alert('Model created');
 
@@ -32,11 +49,12 @@ async function handleFormSubmit(event) {
   }
 }
 
-async function postFormDataAsJson(url, formData) {
+async function postFormDataAsJson(url, formData, id) {
   out(formData.entries());
-  const plainFormData = Object.fromEntries(formData.entries());
-
+  let plainFormData = Object.fromEntries(formData.entries());
+  plainFormData.brand = {"id":id};
   const formDataJsonString = JSON.stringify(plainFormData);
+  out(formDataJsonString);
 
   const fetchOptions = {
     method: "POST",

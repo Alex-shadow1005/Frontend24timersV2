@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create new Brand</title>
+  <link rel="stylesheet" href="css/additems.css">
+</head>
+<body>
+<div>
+  <h1>Insert carbrand into the system</h1>
+  <form action="http://localhost:8080/api/brand" method="post" id="newBrandForm">
+    <label for="brandname"></label>
+    <input type="text" name="brandname" placeholder="Brand Name">
+    <label for="nationality"></label>
+    <input type="text" name="nationality" placeholder="Nationality">
+    <button class="button" type=submit title="Gem" id="submit">Create</button>
+  </form>
+
+
+</div>
+<script src="js/createbrand.js"></script>
+</body>
+</html>
